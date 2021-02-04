@@ -107,17 +107,17 @@ const Register = () => {
                 </Form.Group>
                 <Form.Group controlId="text">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control required type="text" placeholder="Username" id='un' value={username} onChange={e=>handleInput(e.target.value, 'un')}/>
+                    <Form.Control required type="text" placeholder="Username" value={username} onChange={e=>handleInput(e.target.value, 'un')}/>
                     <Form.Text style={{color:'red'}}></Form.Text>
                 </Form.Group>
 
                 <Form.Group controlId="text">
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control required type="text" placeholder="Username" id="fn" value={firstName} onChange={e=>handleInput(e.target.value, "fn")}/>
-                    <Form.Text style={{color:'red'}} id='fnt'></Form.Text>
+                    <Form.Control required type="text" placeholder="Username" value={firstName} onChange={e=>handleInput(e.target.value, "fn")}/>
+                    <Form.Text style={{color:'red'}} ></Form.Text>
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control required type="text" placeholder="Username" id="ln" value={lastName} onChange={e=>handleInput(e.target.value, 'ln')}/>
-                    <Form.Text style={{color:'red'}} id='lnt'></Form.Text>
+                    <Form.Control required type="text" placeholder="Username" value={lastName} onChange={e=>handleInput(e.target.value, 'ln')}/>
+                    <Form.Text style={{color:'red'}} ></Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>

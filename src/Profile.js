@@ -66,10 +66,10 @@ const Profile = (props) => {
                     console.log(e.target.value)}}/>
                     <Form.Text>Current value: {data.displayName}</Form.Text>
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control required type="text" placeholder="First Name" id="fn" value={fn} onChange={e=>setFN(e.target.value)}/>
+                    <Form.Control required type="text" placeholder="First Name" value={fn} onChange={e=>setFN(e.target.value)}/>
                     <Form.Text>Current value: {data.firstName}</Form.Text>
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control required type="text" placeholder="Last Name" id="ln" value={ln} onChange={e=>setLN(e.target.value)}/>
+                    <Form.Control required type="text" placeholder="Last Name" value={ln} onChange={e=>setLN(e.target.value)}/>
                     <Form.Text>Current value: {data.lastName}</Form.Text>
                 </Form.Group>
                 <Button type='submit' onClick={handleChange}>Submit Changes</Button>
