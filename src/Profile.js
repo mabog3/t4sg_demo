@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { UserContext } from "./providers/UserProvider"
 import {auth, firestore} from "./firebase"
 import {Redirect} from 'react-router-dom'
@@ -16,21 +16,32 @@ const Profile = (props) => {
     const [ln, setLN] = useState('')
 
     const user = useContext(UserContext)
-    if (!user) {
-        return (
-            <Redirect to="/"></Redirect>
-        )
-    }
-    const userRef = firestore.doc(`users/${user.uid}`)
-    userRef.get().then((us) => {
-        if (us.exists) {
-            setData(us.data())
-        } else {
-            console.log("No such us!")
-        }})
 
-        console.log(data.firstName)
-        console.log(data)
+    const changeData = () => {
+        const x = userRef.get().then((us) => {
+            if (us.exists) {
+                setData(us.data())
+                console.log('data fetched')
+            } else {
+                console.log("No such us!")
+            }})
+
+    }
+    useEffect(() => {
+        if (!user) {
+            return (
+                <Redirect to="/"></Redirect>
+            )
+        }
+
+        changeData()
+        
+    })
+    const userRef = firestore.doc(`users/${user.uid}`)
+    
+
+        // console.log(data.firstName)
+        // console.log(data)
     const handleChange = async () => {
         if (fn.length < 1 || un.length < 1 || ln.length < 1) {
             alert("Info fields may not be empty")
@@ -42,7 +53,10 @@ const Profile = (props) => {
                 firstName:fn,
                 lastName:ln,
                 displayName:un,
-            }, { merge: false })
+            }, { merge: false }).then(() =>{
+                changeData()
+            })
+            console.log(`${fn}, ${ln}`)
         } catch(err) {
             console.log(err)
             alert(err.message)
